@@ -14,9 +14,9 @@ export interface Player {
   hasLost: boolean
 }
 
-type GameStage = 'action' | 'drawing'
+export type GameStage = 'action' | 'drawing'
 
-export interface Game {
+export interface GameData {
   players: Player[]
   activePlayerIndex: number
   stage: GameStage

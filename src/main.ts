@@ -1,4 +1,4 @@
-import { createGameController } from './game-controller'
+import { createGameController } from '@/game-controller'
 
 const game = createGameController(
   { deck: [4, 8, 15, 16, 23, 42], hand: [4, 15, 23, 42] },
