@@ -1,6 +1,10 @@
 import { GameData, GameStage } from '@/types'
 
 export const validateMove = (game: GameData, index: number, stage: GameStage) => {
+  if (game.hasEnded) {
+    throw new Error('this game has ended')
+  }
+
   if (game.activePlayerIndex !== index) {
     throw new Error('invalid active player')
   }

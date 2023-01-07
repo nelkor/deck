@@ -6,8 +6,8 @@ import { createPass } from './pass'
 
 export const createGameController = (...candidates: Candidate[]) => {
   const game = createGame(candidates)
-  const { printGame, printLog } = createLogger(game)
-  const pass = createPass(game)
+  const { printGame, printLog, write } = createLogger(game)
+  const pass = createPass(game, write)
 
   return {
     printGame,
