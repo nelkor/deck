@@ -5,7 +5,7 @@ import { getIndexOfWinner } from './operations'
 import { LogFn } from './types'
 
 const getNextIndex = (game: GameData, index: number) =>
-  (index + 1) >= game.players.length ? 0 : index + 1
+  index + 1 >= game.players.length ? 0 : index + 1
 
 const tryDraw = (game: GameData, index: number, log: LogFn) => {
   const player = game.players[index]
@@ -48,5 +48,5 @@ const purePass = (game: GameData, index: number, log: LogFn) => {
   tryDraw(game, getNextIndex(game, index), log)
 }
 
-export const createPass = (game: GameData, log: LogFn) =>
-  (index: number) => purePass(game, index, log)
+export const createPass = (game: GameData, log: LogFn) => (index: number) =>
+  purePass(game, index, log)

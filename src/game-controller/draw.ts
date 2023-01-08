@@ -22,5 +22,6 @@ export const pureDraw = (
   log(`Игрок index-${index} взял с верха колоды карту id-${card.idInPlay}`)
 }
 
-export const createDraw = (game: GameData, log: LogFn) =>
-  (index: number, baseId: number) => pureDraw(game, index, baseId, log)
+export const createDraw =
+  (game: GameData, log: LogFn) => (index: number, baseId: number) =>
+    pureDraw(game, index, baseId, log)
