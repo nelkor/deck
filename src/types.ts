@@ -20,5 +20,6 @@ export interface GameData {
   players: Player[]
   activePlayerIndex: number
   stage: GameStage
-  hasEnded: boolean
+  round: number
+  winnerIndex: number | null
 }

@@ -1,7 +1,7 @@
 import { GameData } from '@/types'
 
 import { validateMove } from './validations'
-import { getIndexOfWinner } from './operations'
+import { setPlayerToLose } from './operations'
 import { LogFn } from './types'
 
 const getNextIndex = (game: GameData, index: number) =>
@@ -16,19 +16,23 @@ const tryDraw = (game: GameData, index: number, log: LogFn) => {
     return
   }
 
+  if (index < game.activePlayerIndex) {
+    game.round++
+
+    log(`Начинается следующий раунд: ${game.round}`)
+  }
+
   game.activePlayerIndex = index
 
   log(`Ход переходит игроку index-${index}`)
 
   if (!player.deck.length) {
-    player.hasLost = true
+    setPlayerToLose(game, index)
 
     log(`Игрок index-${index} проиграл из-за невозможности взять карту`)
 
-    const winner = getIndexOfWinner(game)
-
-    if (game.hasEnded) {
-      log(`Игрок index-${winner} выиграл, оставшись последним`)
+    if (game.winnerIndex !== null) {
+      log(`Игрок index-${game.winnerIndex} выиграл, оставшись последним`)
 
       return
     }

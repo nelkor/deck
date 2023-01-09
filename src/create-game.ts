@@ -21,7 +21,8 @@ export const createGame = (candidates: Candidate[]): GameData => {
   return {
     players,
     activePlayerIndex: 0,
+    round: 1,
     stage: 'action',
-    hasEnded: false,
+    winnerIndex: null,
   }
 }

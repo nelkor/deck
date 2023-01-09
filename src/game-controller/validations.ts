@@ -5,7 +5,7 @@ export const validateMove = (
   index: number,
   stage: GameStage
 ) => {
-  if (game.hasEnded) {
+  if (game.winnerIndex !== null) {
     throw new Error('this game has ended')
   }
 

@@ -1,9 +1,10 @@
 import { GameData } from '@/types'
 
-export const getIndexOfWinner = (game: GameData) => {
+export const setPlayerToLose = (game: GameData, index: number) => {
+  game.players[index].hasLost = true
+
   const alivePlayers = game.players.filter(player => !player.hasLost)
 
-  game.hasEnded = alivePlayers.length === 1
-
-  return game.players.indexOf(alivePlayers[0])
+  game.winnerIndex =
+    alivePlayers.length === 1 ? game.players.indexOf(alivePlayers[0]) : null
 }
